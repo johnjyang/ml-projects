@@ -4,16 +4,6 @@ import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 import gc
 
-'''
-1. ssh -p 616 john@172.251.186.111
-2. In a new terminal, sftp -oPort=616 john@172.251.186.111
-    - cd /mnt/big 
-3. tmux a -t JohnsCifar
-4. source ~/envs/keras/bin/activate
-5. Run the code
-6. Ctr B + (then) D
-'''
-
 tf.compat.v1.disable_eager_execution()
 
 def unpickle(file):
