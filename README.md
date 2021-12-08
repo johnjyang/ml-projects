@@ -1,1 +1,2 @@
-# ml-projects
+# Machine Learning Projects
+From linear regression to CNN
