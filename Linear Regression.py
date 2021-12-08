@@ -72,5 +72,3 @@ print('o', theta)
 print('n', FinalT)
 
 print('\nFinal Loss', loss(x, y, FinalT))
-
-
