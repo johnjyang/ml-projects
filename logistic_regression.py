@@ -3,7 +3,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 tf.compat.v1.disable_eager_execution()
-file = np.loadtxt('Origin/collegedata.txt', delimiter=',')
+file = np.loadtxt('data/collegedata.txt', delimiter=',')
 np.random.shuffle(file)
 scores = (file[:, :-1] - np.mean(file[:, :-1], axis=0))/np.std(file[:, :-1], axis=0)
 result = file[:, -1]

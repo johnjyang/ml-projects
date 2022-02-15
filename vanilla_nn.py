@@ -4,7 +4,7 @@ import math
 import matplotlib.pyplot as plt
 
 tf.compat.v1.disable_eager_execution()
-file = np.loadtxt('Origin/circledata.txt', delimiter=',')
+file = np.loadtxt('data/circledata.txt', delimiter=',')
 
 np.random.shuffle(file)
 hori = (file[:, :-1] - np.mean(file[:, :-1], axis=0)) / np.std(file[:, :-1], axis=0)

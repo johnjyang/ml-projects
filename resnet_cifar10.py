@@ -12,19 +12,19 @@ def unpickle(file):
         dict = pickle.load(f, encoding='bytes')
     return dict
 
-image_files = np.stack((unpickle('Origin/cifar/data_batch_1')[b'data'],
-                        unpickle('Origin/cifar/data_batch_2')[b'data'],
-                        unpickle('Origin/cifar/data_batch_3')[b'data'],
-                        unpickle('Origin/cifar/data_batch_4')[b'data'],
-                        unpickle('Origin/cifar/data_batch_5')[b'data']))
+image_files = np.stack((unpickle('data/cifar/data_batch_1')[b'data'],
+                        unpickle('data/cifar/data_batch_2')[b'data'],
+                        unpickle('data/cifar/data_batch_3')[b'data'],
+                        unpickle('data/cifar/data_batch_4')[b'data'],
+                        unpickle('data/cifar/data_batch_5')[b'data']))
 
-labels = np.append([unpickle('Origin/cifar/data_batch_1')[b'labels'],
-                    unpickle('Origin/cifar/data_batch_2')[b'labels'],
-                    unpickle('Origin/cifar/data_batch_3')[b'labels'],
-                    unpickle('Origin/cifar/data_batch_4')[b'labels']],
-                   unpickle('Origin/cifar/data_batch_5')[b'labels'])
+labels = np.append([unpickle('data/cifar/data_batch_1')[b'labels'],
+                    unpickle('data/cifar/data_batch_2')[b'labels'],
+                    unpickle('data/cifar/data_batch_3')[b'labels'],
+                    unpickle('data/cifar/data_batch_4')[b'labels']],
+                   unpickle('data/cifar/data_batch_5')[b'labels'])
 
-words = unpickle('Origin/cifar/batches.meta')[b'label_names']
+words = unpickle('data/cifar/batches.meta')[b'label_names']
 
 def create(dir):
     result = []
@@ -33,7 +33,7 @@ def create(dir):
             for im in i:
                 result.append(np.rot90(np.stack((np.reshape(im[:1024], (32, 32)), np.reshape(im[1024:2048], (32, 32)), np.reshape(im[2048:3072], (32, 32)))).T/255, 3))
     elif dir == 'test':
-        for im in unpickle('Origin/cifar/test_batch')[b'data']:
+        for im in unpickle('data/cifar/test_batch')[b'data']:
             result.append(np.rot90(np.stack((np.reshape(im[:1024], (32, 32)), np.reshape(im[1024:2048], (32, 32)), np.reshape(im[2048:3072], (32, 32)))).T/255, 3))
     return result
 
@@ -44,7 +44,7 @@ X_valid = np.array(create('train')[45000:])
 y_valid = np.array(labels[45000:])
 
 X_test = np.array(create('test'))
-y_test = np.array(unpickle('Origin/cifar/test_batch')[b'labels'])
+y_test = np.array(unpickle('data/cifar/test_batch')[b'labels'])
 
 X = tf.compat.v1.placeholder(tf.float32, shape=(None, 32, 32, 3))
 y = tf.compat.v1.placeholder(tf.int32, shape=None)

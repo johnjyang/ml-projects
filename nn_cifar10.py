@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 tf.compat.v1.disable_eager_execution()
 
-data = np.load('Origin/mnist.npz')
+data = np.load('data/mnist.npz')
 
 X_train = np.concatenate((np.array([[1] * 60000]), (np.reshape(data['x_train'], (60000, 784))/255).T), axis=0).T
 y_train = data['y_train']
