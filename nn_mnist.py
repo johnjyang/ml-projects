@@ -53,7 +53,8 @@ def optimize():
     batch_size = 30
     best_yet = min(e_list)
     run = True
-    while run:
+    # while run:
+    for i in range(3):
         batch_list = []
         for i in range(0, len(X_train), batch_size):
             batch = X_train[i:i+batch_size]
